@@ -1,0 +1,3 @@
+{
+  "ForecastConfiguration": "{ \"RefreshIntervalSeconds\": 1800, \"Stations\": [{ \"Name\": \"Example\", \"Latitude\": 0, \"Longitude\": 0 }] }"
+}

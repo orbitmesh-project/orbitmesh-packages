@@ -1,0 +1,10 @@
+<Solution>
+  <Project Path="DayInfo/OrbitMesh.DayInfo.csproj" />
+  <Project Path="ForecastIO/OrbitMesh.ForecastIO.csproj" />
+  <Project Path="NetworkTools/OrbitMesh.NetworkTools.csproj" />
+  <Project Path="OpenWeather/OrbitMesh.OpenWeather.csproj" />
+  <Project Path="SonyBravia/OrbitMesh.SonyBravia.csproj" />
+  <Project Path="Spotify/OrbitMesh.Spotify.csproj" />
+  <Project Path="TPLinkSmartHome/OrbitMesh.TPLinkSmartHome.csproj" />
+  <Project Path="Waze/OrbitMesh.Waze.csproj" />
+</Solution>

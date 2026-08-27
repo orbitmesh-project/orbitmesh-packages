@@ -1,0 +1,16 @@
+<Project>
+
+  <!-- PackageInfo.xml's Version is a build artifact, not a source of truth: the .csproj's own
+       <Version> is stamped into the copied file after every Build, so it only needs to be
+       maintained in one place. -->
+  <Target Name="StampPackageInfoVersion" AfterTargets="Build" Condition="Exists('$(OutDir)PackageInfo.xml')">
+    <XmlPoke XmlInputPath="$(OutDir)PackageInfo.xml" Query="/Package/@Version" Value="$(Version)" />
+  </Target>
+
+  <!-- `dotnet publish` copies Content items straight from source rather than from $(OutDir), so the
+       Build-time stamp above doesn't carry over - needs its own pass against $(PublishDir). -->
+  <Target Name="StampPackageInfoVersionOnPublish" AfterTargets="Publish" Condition="Exists('$(PublishDir)PackageInfo.xml')">
+    <XmlPoke XmlInputPath="$(PublishDir)PackageInfo.xml" Query="/Package/@Version" Value="$(Version)" />
+  </Target>
+
+</Project>

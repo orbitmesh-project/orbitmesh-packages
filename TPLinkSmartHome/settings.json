@@ -1,0 +1,6 @@
+{
+  "poolingInterval": "10000",
+  "discoveryIntervalMs": "60000",
+  "Username": "REPLACE_ME",
+  "Password": "REPLACE_ME"
+}

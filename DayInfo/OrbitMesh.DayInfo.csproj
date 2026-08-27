@@ -1,0 +1,33 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RootNamespace>OrbitMesh.DayInfo</RootNamespace>
+    <AssemblyName>OrbitMesh.DayInfo</AssemblyName>
+    <Version>1.1.1</Version>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="OrbitMesh.Common" Version="1.2.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\saints.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="PackageInfo.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="calendar157.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="settings.json" Condition="Exists('settings.json')">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+</Project>

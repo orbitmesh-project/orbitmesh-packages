@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Version is stamped from the .csproj Version property at build time - do not edit here. -->
+<Package Name="DayInfo" Version="0.0.0" Author="Elie Bertret"
+         URL="https://blog.forgelab.me"
+         Description="Sunrise/sunset (NOAA solar calculator) and French name-day (almanac) info - no external API"
+         Icon="calendar157.png"
+         ExecutableFilename="OrbitMesh.DayInfo.dll"
+         Runtime="DotNet">
+  <Settings>
+    <Setting name="TimeZone" isRequired="true" type="Int32" description="Enter your timezone" />
+    <Setting name="Latitude" isRequired="true" type="Double" description="Enter your latitude GPS coordinate" />
+    <Setting name="Longitude" isRequired="true" type="Double" description="Enter your longitude GPS coordinate" />
+  </Settings>
+  <Compatibility dotNetTargetPlatform="net10.0" />
+</Package>

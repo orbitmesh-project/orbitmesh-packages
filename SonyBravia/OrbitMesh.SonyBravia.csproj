@@ -1,0 +1,33 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RootNamespace>OrbitMesh.SonyBravia</RootNamespace>
+    <AssemblyName>OrbitMesh.SonyBravia</AssemblyName>
+    <Version>1.1.1</Version>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="OrbitMesh.Common" Version="1.2.1" />
+    <!-- netstandard2.0 library, still maintained, verified to use the modern IRCC-IP + X-Auth-PSK
+         auth scheme that Sony Bravia (Android TV) sets still support - reused as-is instead of
+         reimplementing the IRCC/SOAP protocol from scratch. -->
+    <PackageReference Include="BraviaIRCCControl" Version="1.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="PackageInfo.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="bravia.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="settings.json" Condition="Exists('settings.json')">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+</Project>

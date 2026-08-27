@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Version is stamped from the .csproj Version property at build time - do not edit here. -->
+<Package Name="TPLinkSmartHome" Version="0.0.0" Author="Elie Bertret"
+         URL="https://github.com/roddone"
+         Description="Discover and control TP-Link Kasa/Tapo devices on the local network (legacy, KLAP and TPAP protocols)"
+         Icon="kasasmart.jpg"
+         ExecutableFilename="OrbitMesh.TPLinkSmartHome.dll"
+         Runtime="DotNet">
+  <Settings>
+    <Setting name="poolingInterval" type="Int32" defaultValue="10000" isRequired="false" description="How often (ms) to refresh the state of already-discovered devices" />
+    <Setting name="discoveryIntervalMs" type="Int32" defaultValue="60000" isRequired="false" description="How often (ms) to re-broadcast a LAN discovery pass to find new/moved devices. Can be forced early via the ForceDiscovery message handler." />
+    <Setting name="Username" type="String" isRequired="true" defaultValue="your-tplink-account@example.com"
+             description="TP-Link/Kasa account email - required by KLAP/TPAP-authenticated devices (2023+ Kasa firmware, all Tapo devices). Same credential as the Kasa/Tapo mobile app." />
+    <Setting name="Password" type="Password" isRequired="true" defaultValue="CHANGE_ME"
+             description="TP-Link/Kasa account password - see Username." />
+  </Settings>
+  <Compatibility dotNetTargetPlatform="net10.0" />
+</Package>

@@ -1,0 +1,4 @@
+{
+  "Trips": "[{ \"Name\": \"Example Trip\", \"StartLongitude\": 0, \"StartLatitude\": 0, \"FinishLongitude\": 0, \"FinishLatitude\": 0, \"Region\": \"Us\" }]",
+  "Places": "[{ \"Name\": \"Example\", \"Longitude\": 0, \"Latitude\": 0 }]"
+}

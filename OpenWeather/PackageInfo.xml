@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Version is stamped from the .csproj Version property at build time - do not edit here. -->
+<Package Name="OpenWeather" Version="0.0.0" Author="Elie Bertret"
+         URL="https://blog.forgelab.me"
+         Description="Weather service for OrbitMesh, based on the OpenWeatherMap v2.5 API (free tier, verified live)"
+         Icon="openweather_icon.jpg"
+         ExecutableFilename="OrbitMesh.OpenWeather.dll"
+         Runtime="DotNet">
+  <Settings>
+    <Setting name="OpenWeatherConfiguration" isRequired="true" type="JsonObject" description="OpenWeatherMap API key, language and monitored stations">
+      <defaultContent>
+        {
+          "ApiKey": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+          "Language": "fr",
+          "RefreshIntervalSeconds": 900,
+          "Stations": [
+            { "Name": "Paris", "Latitude": 48.853, "Longitude": 2.35 },
+            { "Name": "Lille", "Latitude": 50.629, "Longitude": 3.05 },
+            { "Name": "London", "Latitude": 51.557, "Longitude": -0.14 }
+          ]
+        }
+      </defaultContent>
+    </Setting>
+  </Settings>
+  <Compatibility dotNetTargetPlatform="net10.0" />
+</Package>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Version is stamped from the .csproj Version property at build time - do not edit here. -->
+<Package Name="ForecastIO" Version="0.0.0" Author="Elie Bertret"
+         URL="https://blog.forgelab.me"
+         Description="Global weather service for OrbitMesh. Rebuilt on Open-Meteo (free, keyless) after Dark Sky/forecast.io was shut down by Apple in March 2023."
+         Icon="cloud363.png"
+         ExecutableFilename="OrbitMesh.ForecastIO.dll"
+         Runtime="DotNet">
+  <Settings>
+    <Setting name="ForecastConfiguration" isRequired="true" type="JsonObject" description="Refresh interval and monitored stations (no API key needed - Open-Meteo is free and keyless)">
+      <defaultContent>
+        {
+          "RefreshIntervalSeconds": 1800,
+          "Stations": [
+            { "Name": "Paris", "Latitude": 48.853, "Longitude": 2.35 },
+            { "Name": "Lille", "Latitude": 50.629, "Longitude": 3.05 },
+            { "Name": "London", "Latitude": 51.557, "Longitude": -0.14 }
+          ]
+        }
+      </defaultContent>
+    </Setting>
+  </Settings>
+  <Compatibility dotNetTargetPlatform="net10.0" />
+</Package>
