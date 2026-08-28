@@ -107,7 +107,7 @@ jobs:
             -o "$RUNNER_TEMP/mint.json" -w '%{http_code}' \
             "$SERVER/feeds/$FEED/api/v2/publish/token")
 
-          if [ "$STATUS" != 200 ]; then
+          if [ "$STATUS" != 201 ]; then
             echo "::error::Pepite refused to mint a publish key (HTTP $STATUS) - is the trusted publisher configured for this repo/environment on the feed's Publishers page?"
             cat "$RUNNER_TEMP/mint.json"
             echo
