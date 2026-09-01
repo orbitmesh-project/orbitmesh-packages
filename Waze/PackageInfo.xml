@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Version is stamped from the .csproj Version property at build time - do not edit here. -->
+<Package Name="Waze" Version="0.0.0" Author="Elie Bertret"
+         Icon="Waze.png"
+         URL="https://blog.forgelab.me"
+         Description="Get paths and travel times from Waze's unofficial live-map routing service"
+         ExecutableFilename="OrbitMesh.Waze.dll"
+         Runtime="DotNet">
+  <Settings>
+    <Setting name="Trips" type="JsonObject" isRequired="false" description="Named trips - query with GetTripTraffic(tripName) instead of passing coordinates every time">
+      <defaultContent>
+        [
+          {
+            "Name": "Example Trip",
+            "StartLongitude": 0,
+            "StartLatitude": 0,
+            "FinishLongitude": 0,
+            "FinishLatitude": 0,
+            "Region": "Us"
+          }
+        ]
+      </defaultContent>
+    </Setting>
+    <Setting name="Places" type="JsonObject" isRequired="false" description="Named GPS points (Home, Work, Daycare, School...) - query any pair with GetPlaceTraffic(fromPlace, toPlace) instead of pre-defining every route combination as a Trip">
+      <defaultContent>
+        [
+          {
+            "Name": "Example",
+            "Longitude": 0,
+            "Latitude": 0
+          }
+        ]
+      </defaultContent>
+    </Setting>
+  </Settings>
+  <Compatibility dotNetTargetPlatform="net10.0" />
+</Package>

@@ -4,6 +4,12 @@ Format: [Keep a Changelog](https://keepachangelog.com/). Version matches `<Versi
 `OrbitMesh.Waze.csproj`, which is what gets published (see the repo root
 [README.md](../README.md#publishing)).
 
+## [1.1.2]
+
+### Changed
+
+- Updated example values in `PackageInfo.xml`.
+
 ## [1.1.1]
 
 No functional change - version bump to exercise `publish-package.yml`.
