@@ -4,6 +4,15 @@ Format: [Keep a Changelog](https://keepachangelog.com/). Version matches `<Versi
 `OrbitMesh.Waze.csproj`, which is what gets published (see the repo root
 [README.md](../README.md#publishing)).
 
+## [1.1.3]
+
+### Changed
+
+- `OrbitMesh.Common` bumped to 1.2.2 - fixes a reconnect bug where `PackageHost` never sent the
+  `IsReconnection` header, so the Server treated every reconnect (including an ordinary transient
+  network blip) as brand new and purged this package's telemetry items, making values disappear for
+  up to a full polling interval with nothing actually wrong.
+
 ## [1.1.2]
 
 ### Changed

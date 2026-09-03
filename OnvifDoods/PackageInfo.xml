@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Version is stamped from the .csproj Version property at build time - do not edit here. -->
+<Package Name="OnvifDoods" Version="0.0.0" Author="Elie Bertret"
+         URL="https://github.com/orbitmesh-project/orbitmesh-packages"
+         Description="Watches ONVIF cameras for motion and runs a snapshot through a DOODS2 object-detection server, publishing what it finds as Telemetry"
+         Icon="onvifdoods.png"
+         ExecutableFilename="OrbitMesh.OnvifDoods.dll"
+         Runtime="DotNet">
+  <Settings>
+    <Setting name="Cameras" type="JsonObject" isRequired="true" description="ONVIF cameras to watch - Name, OnvifUri, Username, Password, optional ProfileToken, RtspUrl, EnableMotionEvents, MinSecondsBetweenDetections and PollingIntervalSeconds per entry. Leave RtspUrl empty to grab the detection frame via the camera's own ONVIF snapshot service, or set it to capture via RTSP/ffmpeg instead for a camera whose ONVIF snapshot doesn't work. Set EnableMotionEvents to false for a camera confirmed to never fire ONVIF motion events, and use PollingIntervalSeconds as the only trigger instead.">
+      <defaultContent>
+        [
+          {
+            "Name": "Example camera",
+            "OnvifUri": "http://192.168.1.1:8080/onvif/device_service",
+            "Username": "admin",
+            "Password": "CHANGE_ME",
+            "ProfileToken": "",
+            "RtspUrl": "",
+            "EnableMotionEvents": true,
+            "MinSecondsBetweenDetections": 30,
+            "PollingIntervalSeconds": 0
+          }
+        ]
+      </defaultContent>
+    </Setting>
+    <Setting name="DoodsUrl" type="String" isRequired="true" defaultValue="http://192.168.1.2:8080"
+             description="Base URL of the DOODS2 server (https://github.com/snowzach/doods2), no trailing path." />
+    <Setting name="DoodsDetectorName" type="String" isRequired="false" defaultValue="default"
+             description="DOODS2 detector to use - matches whatever is configured on the DOODS2 server's own doods.conf.yaml." />
+    <Setting name="Labels" type="JsonObject" isRequired="false" description="Object labels to detect and their minimum confidence (0-100), passed straight through to DOODS2's own detect request field.">
+      <defaultContent>{ "person": 60 }</defaultContent>
+    </Setting>
+  </Settings>
+  <Compatibility dotNetTargetPlatform="net10.0" />
+</Package>

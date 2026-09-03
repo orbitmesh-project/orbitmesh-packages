@@ -7,11 +7,11 @@
     <Nullable>enable</Nullable>
     <RootNamespace>OrbitMesh.Waze</RootNamespace>
     <AssemblyName>OrbitMesh.Waze</AssemblyName>
-    <Version>1.1.2</Version>
+    <Version>1.1.3</Version>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="OrbitMesh.Common" Version="1.2.1" />
+    <PackageReference Include="OrbitMesh.Common" Version="1.2.2" />
   </ItemGroup>
 
   <ItemGroup>

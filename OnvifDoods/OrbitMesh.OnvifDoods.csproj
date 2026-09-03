@@ -5,21 +5,26 @@
     <TargetFramework>net10.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <RootNamespace>OrbitMesh.TPLinkSmartHome</RootNamespace>
-    <AssemblyName>OrbitMesh.TPLinkSmartHome</AssemblyName>
-    <Version>1.1.4</Version>
+    <RootNamespace>OrbitMesh.OnvifDoods</RootNamespace>
+    <AssemblyName>OrbitMesh.OnvifDoods</AssemblyName>
+    <Version>1.3.1</Version>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="KasaTapoClient" Version="1.3.1" />
+    <PackageReference Include="SharpOnvifClient" Version="0.9.5" />
     <PackageReference Include="OrbitMesh.Common" Version="1.2.2" />
+    <!-- SharpOnvifClient's WCF bindings pull System.Security.Cryptography.Xml 10.0.9 transitively,
+         which NU1903 flags with 5 known high severity advisories, pinned to 10.0.11 (verified via
+         dotnet list package -vulnerable: 0 vulnerable packages at this version), matching what the
+         rest of this workspace already uses. -->
+    <PackageReference Include="System.Security.Cryptography.Xml" Version="10.0.11" />
   </ItemGroup>
 
   <ItemGroup>
     <Content Include="PackageInfo.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="kasasmart.jpg">
+    <Content Include="onvifdoods.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="settings.json" Condition="Exists('settings.json')">

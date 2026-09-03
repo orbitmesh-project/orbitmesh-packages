@@ -7,11 +7,11 @@
     <Nullable>enable</Nullable>
     <RootNamespace>OrbitMesh.SonyBravia</RootNamespace>
     <AssemblyName>OrbitMesh.SonyBravia</AssemblyName>
-    <Version>1.1.1</Version>
+    <Version>1.1.2</Version>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="OrbitMesh.Common" Version="1.2.1" />
+    <PackageReference Include="OrbitMesh.Common" Version="1.2.2" />
     <!-- netstandard2.0 library, still maintained, verified to use the modern IRCC-IP + X-Auth-PSK
          auth scheme that Sony Bravia (Android TV) sets still support - reused as-is instead of
          reimplementing the IRCC/SOAP protocol from scratch. -->

@@ -1,0 +1,6 @@
+{
+  "Cameras": "[{ \"Name\": \"Example camera\", \"OnvifUri\": \"http://192.168.1.1:8080/onvif/device_service\", \"Username\": \"admin\", \"Password\": \"CHANGE_ME\", \"ProfileToken\": \"\", \"RtspUrl\": \"\", \"EnableMotionEvents\": true, \"MinSecondsBetweenDetections\": 30, \"PollingIntervalSeconds\": 0 }]",
+  "DoodsUrl": "http://192.168.1.2:8080",
+  "DoodsDetectorName": "default",
+  "Labels": "{ \"person\": 60 }"
+}

@@ -2,9 +2,10 @@
 
 Each package now keeps its own changelog, matching its own `<Version>` - see
 [DayInfo](DayInfo/CHANGELOG.md), [ForecastIO](ForecastIO/CHANGELOG.md),
-[NetworkTools](NetworkTools/CHANGELOG.md), [OpenWeather](OpenWeather/CHANGELOG.md),
-[SonyBravia](SonyBravia/CHANGELOG.md), [Spotify](Spotify/CHANGELOG.md),
-[TPLinkSmartHome](TPLinkSmartHome/CHANGELOG.md), [Waze](Waze/CHANGELOG.md).
+[NetworkTools](NetworkTools/CHANGELOG.md), [OnvifDoods](OnvifDoods/CHANGELOG.md),
+[OpenWeather](OpenWeather/CHANGELOG.md), [SonyBravia](SonyBravia/CHANGELOG.md),
+[Spotify](Spotify/CHANGELOG.md), [TPLinkSmartHome](TPLinkSmartHome/CHANGELOG.md),
+[Waze](Waze/CHANGELOG.md).
 
 ## cicd/build-packages.ps1
 
