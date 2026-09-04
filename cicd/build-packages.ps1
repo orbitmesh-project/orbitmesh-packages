@@ -45,13 +45,25 @@ function Get-ProjectVersion([string]$ProjectPath) {
     return $version
 }
 
+# PackageInfo.xml's own Icon="..." attribute is the source of truth for which file is the package's
+# icon (same file the Console shows) - reading it here instead of e.g. globbing for *.png/*.jpg avoids
+# guessing wrong for a package that happens to ship more than one image.
+function Get-PackageIconFileName([string]$ProjectPath) {
+    $packageInfoPath = Join-Path (Split-Path $ProjectPath -Parent) "PackageInfo.xml"
+    if (-not (Test-Path $packageInfoPath)) { return $null }
+    [xml]$packageInfo = Get-Content $packageInfoPath
+    return $packageInfo.Package.Icon
+}
+
 function New-OrbitMeshNupkg([string]$Name, [string]$Version, [string]$ProjectPath, [string]$PublishDir, [string]$OutputDir) {
     # Written next to (not inside) $PublishDir, so the glob below never picks up the nuspec itself.
     $nuspecPath = Join-Path $OutputDir "$Name.nuspec"
-    $readmePath = Join-Path (Split-Path $ProjectPath -Parent) "README.md"
-    # <readme> alone isn't enough - NuGet also needs a matching <file> entry that actually puts the
-    # file at that path inside the package (same as <icon>/its own <file> below, if this repo ever
-    # gets package icons). Without both, nuget.org/Pépite/the feed's UI has nothing to render.
+    $projectDir = Split-Path $ProjectPath -Parent
+    $readmePath = Join-Path $projectDir "README.md"
+    # <readme>/<icon> alone isn't enough - NuGet also needs a matching <file> entry that actually puts
+    # the file at that path inside the package. Without both, nuget.org/Pépite/the feed's UI has
+    # nothing to render (confirmed empirically: a built nupkg had the icon bundled under content/ for
+    # the app's own use, but no <icon> metadata and no root-level copy, so no feed ever showed one).
     $readmeElements = if (Test-Path $readmePath) {
         [PSCustomObject]@{
             Metadata = "    <readme>README.md</readme>"
@@ -59,6 +71,19 @@ function New-OrbitMeshNupkg([string]$Name, [string]$Version, [string]$ProjectPat
         }
     } else {
         Write-Host "No README.md found for $Name at $readmePath - packing without one." -ForegroundColor Yellow
+        [PSCustomObject]@{ Metadata = ""; File = "" }
+    }
+    $iconFileName = Get-PackageIconFileName $ProjectPath
+    $iconPath = if ($iconFileName) { Join-Path $projectDir $iconFileName } else { $null }
+    $iconElements = if ($iconPath -and (Test-Path $iconPath)) {
+        [PSCustomObject]@{
+            Metadata = "    <icon>$iconFileName</icon>"
+            File     = "    <file src=`"$iconPath`" target=`"$iconFileName`" />"
+        }
+    } else {
+        if ($iconFileName) {
+            Write-Host "PackageInfo.xml for $Name declares Icon=`"$iconFileName`" but that file doesn't exist at $iconPath - packing without one." -ForegroundColor Yellow
+        }
         [PSCustomObject]@{ Metadata = ""; File = "" }
     }
     @"
@@ -70,6 +95,7 @@ function New-OrbitMeshNupkg([string]$Name, [string]$Version, [string]$ProjectPat
     <authors>$Authors</authors>
     <description>OrbitMesh package: $Name</description>
 $($readmeElements.Metadata)
+$($iconElements.Metadata)
     <packageTypes>
       <packageType name="OrbitMeshApp" />
     </packageTypes>
@@ -77,6 +103,7 @@ $($readmeElements.Metadata)
   <files>
     <file src="$PublishDir\**" target="content" />
 $($readmeElements.File)
+$($iconElements.File)
   </files>
 </package>
 "@ | Set-Content -Path $nuspecPath -Encoding utf8

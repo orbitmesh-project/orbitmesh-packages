@@ -2,6 +2,7 @@
   <Project Path="DayInfo/OrbitMesh.DayInfo.csproj" />
   <Project Path="ForecastIO/OrbitMesh.ForecastIO.csproj" />
   <Project Path="NetworkTools/OrbitMesh.NetworkTools.csproj" />
+  <Project Path="Ntfy/OrbitMesh.Ntfy.csproj" />
   <Project Path="OnvifDoods/OrbitMesh.OnvifDoods.csproj" />
   <Project Path="OpenWeather/OrbitMesh.OpenWeather.csproj" />
   <Project Path="SonyBravia/OrbitMesh.SonyBravia.csproj" />

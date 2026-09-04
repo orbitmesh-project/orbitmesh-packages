@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Version is stamped from the .csproj Version property at build time - do not edit here. -->
+<Package Name="Ntfy" Version="0.0.0" Author="Elie Bertret"
+         URL="https://github.com/orbitmesh-project/orbitmesh-packages"
+         Description="Sends push notifications via ntfy (ntfy.sh or self-hosted) - exposes a Shared Notify handler any other package can call"
+         Icon="ntfy-icon.png"
+         ExecutableFilename="OrbitMesh.Ntfy.dll"
+         Runtime="DotNet">
+  <Settings>
+    <Setting name="ServerUrl" type="String" isRequired="false" defaultValue="https://ntfy.sh"
+             description="Base URL of the ntfy server (the public instance, or your own self-hosted one), no trailing path." />
+    <Setting name="DefaultTopic" type="String" isRequired="true" defaultValue="orbitmesh"
+             description="Topic to publish to when a Notify call doesn't specify one." />
+    <Setting name="Username" type="String" isRequired="false"
+             description="For a protected topic/self-hosted instance using account auth (Basic). Leave both Username and AccessToken empty for an unauthenticated public topic." />
+    <Setting name="Password" type="Password" isRequired="false"
+             description="Paired with Username - see there." />
+    <Setting name="AccessToken" type="Password" isRequired="false"
+             description="ntfy access token (Bearer auth) - an alternative to Username/Password, and preferred when both are set (easier to scope/rotate/revoke than an account password)." />
+  </Settings>
+  <Compatibility dotNetTargetPlatform="net10.0" />
+</Package>

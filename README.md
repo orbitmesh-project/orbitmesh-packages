@@ -1,7 +1,7 @@
 # orbitmesh-packages
 
 Official OrbitMesh packages: [DayInfo](DayInfo/README.md), [ForecastIO](ForecastIO/README.md),
-[NetworkTools](NetworkTools/README.md), [OnvifDoods](OnvifDoods/README.md),
+[NetworkTools](NetworkTools/README.md), [Ntfy](Ntfy/README.md), [OnvifDoods](OnvifDoods/README.md),
 [OpenWeather](OpenWeather/README.md), [SonyBravia](SonyBravia/README.md), [Spotify](Spotify/README.md),
 [TPLinkSmartHome](TPLinkSmartHome/README.md), [Waze](Waze/README.md). Each is a consumer of the
 `OrbitMesh.Common` SDK (from the separate `orbitmesh` repo) - kept in its own repo since these
