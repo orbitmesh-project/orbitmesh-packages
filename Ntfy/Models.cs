@@ -20,14 +20,18 @@ file sealed class NtfyPublishRequest
     [JsonPropertyName("title")]
     public string? Title { get; set; }
 
-    // Accepts either a number (1-5) or a name ("min"/"low"/"default"/"high"/"urgent") - passed
-    // through as-is rather than parsed/validated here, ntfy already does that server-side.
+    // The JSON publish endpoint wants an actual number (1-5), unlike the header-based publish variant
+    // which also accepts a name ("high" etc.) - confirmed empirically against a real ntfy.sh request:
+    // a string here fails with a misleading "request body must be valid JSON" 400, not a clear
+    // validation error. NtfyClient.PublishAsync accepts the friendly string form and converts.
     [JsonPropertyName("priority")]
-    public string? Priority { get; set; }
+    public int? Priority { get; set; }
 
-    // Comma-separated (e.g. "warning,skull"), not a JSON array - ntfy's own convention.
+    // The JSON publish endpoint wants a JSON array, unlike the header-based publish variant's
+    // comma-separated string - same "request body must be valid JSON" 400 otherwise, confirmed
+    // empirically. NtfyClient.PublishAsync accepts the friendly comma-separated form and splits it.
     [JsonPropertyName("tags")]
-    public string? Tags { get; set; }
+    public string[]? Tags { get; set; }
 
     [JsonPropertyName("click")]
     public string? Click { get; set; }
@@ -44,8 +48,8 @@ public sealed class NtfyClient(HttpClient httpClient, string serverUrl, string? 
             Topic = topic,
             Message = message,
             Title = title,
-            Priority = priority,
-            Tags = tags,
+            Priority = ParsePriority(priority),
+            Tags = string.IsNullOrWhiteSpace(tags) ? null : tags.Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries),
             Click = click
         };
 
@@ -68,5 +72,30 @@ public sealed class NtfyClient(HttpClient httpClient, string serverUrl, string? 
 
         using var response = await httpClient.SendAsync(httpRequest, cancellationToken);
         response.EnsureSuccessStatusCode();
+    }
+
+    // Accepts either an already-numeric string ("4") or one of ntfy's own priority names, matching
+    // what the header-based publish variant accepts - callers of the Notify message handler (a human
+    // typing into the Console, or another package) shouldn't need to know the JSON endpoint's stricter
+    // numeric-only requirement.
+    private static int? ParsePriority(string? priority)
+    {
+        if (string.IsNullOrWhiteSpace(priority))
+        {
+            return null;
+        }
+        if (int.TryParse(priority, out var number))
+        {
+            return number;
+        }
+        return priority.Trim().ToLowerInvariant() switch
+        {
+            "min" => 1,
+            "low" => 2,
+            "default" => 3,
+            "high" => 4,
+            "max" or "urgent" => 5,
+            _ => null
+        };
     }
 }

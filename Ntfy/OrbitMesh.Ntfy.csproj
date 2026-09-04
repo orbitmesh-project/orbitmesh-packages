@@ -7,7 +7,7 @@
     <Nullable>enable</Nullable>
     <RootNamespace>OrbitMesh.Ntfy</RootNamespace>
     <AssemblyName>OrbitMesh.Ntfy</AssemblyName>
-    <Version>1.0.0</Version>
+    <Version>1.0.1</Version>
   </PropertyGroup>
 
   <ItemGroup>
