@@ -11,7 +11,7 @@ Sends push notifications via [ntfy](https://ntfy.sh) (the public instance, or a 
 ## Message handlers
 
 - `Notify(message, title, topic, priority, tags, click)` - **Shared** (see
-  [Messages](https://orbitmesh-project.github.io/orbitmesh/guide/sdk/messages)), so any other package
+  [Messages](https://orbitmesh.org/guide/sdk/messages)), so any other package
   can call it directly as `"Notify"` without namespacing under `Ntfy/`. Only `message` is required:
   - `title` - notification title.
   - `topic` - overrides the `DefaultTopic` setting for this one call.

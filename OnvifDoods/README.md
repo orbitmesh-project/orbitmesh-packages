@@ -15,7 +15,7 @@ publishing the result as a Telemetry Item.
 One instance handles every camera listed in the `Cameras` setting, rather than one instance per
 camera - each OrbitMesh package instance is its own process, so N cameras as N instances pays that
 process's baseline RAM N times over for what is, per camera, a handful of async calls. See
-[Scheduled tasks](https://orbitmesh-project.github.io/orbitmesh/guide/architecture/scheduled-tasks)
+[Scheduled tasks](https://orbitmesh.org/guide/architecture/scheduled-tasks)
 for triggering something *else* off of a detection (e.g. turning on a light) - this package only
 detects and reports, it doesn't act.
 
