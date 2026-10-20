@@ -17,7 +17,7 @@
          which NU1903 flags with 5 known high severity advisories, pinned to 10.0.11 (verified via
          dotnet list package -vulnerable: 0 vulnerable packages at this version), matching what the
          rest of this workspace already uses. -->
-    <PackageReference Include="System.Security.Cryptography.Xml" Version="10.0.11" />
+    <PackageReference Include="System.Security.Cryptography.Xml" Version="10.0.13" />
   </ItemGroup>
 
   <ItemGroup>
