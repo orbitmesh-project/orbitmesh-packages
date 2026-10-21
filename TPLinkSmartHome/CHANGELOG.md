@@ -4,6 +4,18 @@ Format: [Keep a Changelog](https://keepachangelog.com/). Version matches `<Versi
 `OrbitMesh.TPLinkSmartHome.csproj`, which is what gets published (see the repo root
 [README.md](../README.md#publishing)).
 
+## [1.1.5]
+
+### Changed
+
+- `OrbitMesh.Common` bumped to 1.2.5 - fixes `PackageHost` crashing with a secondary
+  `FormatException` whenever a message handler threw an exception whose message contained literal
+  `{`/`}` (e.g. an ffmpeg error), which replaced the real error in the log with an unrelated stack
+  trace.
+- `Microsoft.AspNetCore.SignalR.Common` 10.0.13 added as a direct reference, pinning the version of
+  the SignalR assembly the package pulls in transitively.
+- `KasaTapoClient` bumped from 1.3.1 to 2.1.0 (major version).
+
 ## [1.1.4]
 
 ### Changed

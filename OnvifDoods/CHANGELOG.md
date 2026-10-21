@@ -4,6 +4,21 @@ Format: [Keep a Changelog](https://keepachangelog.com/). Version matches `<Versi
 `OrbitMesh.OnvifDoods.csproj`, which is what gets published (see the repo root
 [README.md](../README.md#publishing)).
 
+## [1.3.2]
+
+### Changed
+
+- `OrbitMesh.Common` bumped to 1.2.5 - fixes `PackageHost` crashing with a secondary
+  `FormatException` whenever a message handler threw an exception whose message contained literal
+  `{`/`}` (e.g. an ffmpeg error), which replaced the real error in the log with an unrelated stack
+  trace.
+- `Microsoft.AspNetCore.SignalR.Common` 10.0.13 added as a direct reference, pinning the version of
+  the SignalR assembly the package pulls in transitively.
+- `System.Security.Cryptography.Xml` pinned to 10.0.13 (was 10.0.11).
+- `SharpOnvifClient` deliberately stays on 0.9.5: 0.11.x moves the `Security` namespace and
+  `NotificationMessageHolderType`, and this package's camera handling has only been validated
+  against 0.9.5 on real hardware.
+
 ## [1.3.1]
 
 ### Changed

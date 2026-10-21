@@ -7,11 +7,12 @@
     <Nullable>enable</Nullable>
     <RootNamespace>OrbitMesh.Ntfy</RootNamespace>
     <AssemblyName>OrbitMesh.Ntfy</AssemblyName>
-    <Version>1.0.1</Version>
+    <Version>1.0.2</Version>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="OrbitMesh.Common" Version="1.2.2" />
+    <PackageReference Include="Microsoft.AspNetCore.SignalR.Common" Version="10.0.13" />
+    <PackageReference Include="OrbitMesh.Common" Version="1.2.5" />
   </ItemGroup>
 
   <ItemGroup>
